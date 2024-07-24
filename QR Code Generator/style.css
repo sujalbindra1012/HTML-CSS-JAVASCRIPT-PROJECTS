@@ -4,9 +4,17 @@
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
-
 body {
-    background: #262a2f
+    background: #262a2f;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj93AH_hHvStEiXTdnTwPUZdd--TrHslgxMg&s');
+    background-size: cover;
+    /* background-size: cover; */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
