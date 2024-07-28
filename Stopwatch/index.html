@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="stopwatch">
+        <h1 id="displayTime">00:00:00</h1>
+        <div class="buttons">
+            <img onclick="watchstop()" src="images/stop.png" alt="">
+            <img onclick="watchstart()" src="images/start.png" alt="">
+            <img onclick="watchreset()" src="images/reset.png" alt="">
+        </div>
+    </div>
+    <script>
+
+        let [seconds, minutes, hours] = [0, 0, 0];
+        let displayTime = document.getElementById("displayTime");
+        let timer = null;
+        let isrun=false;
+
+        function stopwatch() {
+            seconds++;
+            if (seconds == 60) {
+                seconds = 0;
+                minutes++;
+                if (minutes == 60) {
+                    minutes = 9;
+                    hours++;
+                }
+            }
+
+            let h = hours < 10 ? "0" + hours : hours;
+            let m = minutes < 10 ? "0" + minutes : minutes;
+            let s = seconds < 10 ? "0" + seconds : seconds;
+
+            displayTime.innerHTML = h + ":" + m + ":" + s;
+        }
+
+        function watchstart() {
+            if(!isrun){
+                timer=setInterval(stopwatch,1000);
+                isrun=true;
+            }
+            else{
+                clearInterval(timer);
+                isrun=false;
+            }
+            
+
+        }
+
+        function watchstop() {
+            clearInterval(timer);
+            isrun=false;
+        }
+
+        function watchreset() {
+            clearInterval(timer);
+            [seconds, minutes, hours] = [0, 0, 0];
+            displayTime.innerHTML = "00:00:00";
+            isrun=false;
+        }
+
+    </script>
+
+
+</body>
+
+</html>
